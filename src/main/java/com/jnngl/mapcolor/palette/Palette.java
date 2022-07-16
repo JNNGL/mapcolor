@@ -29,6 +29,15 @@ public interface Palette {
    Palette172 PALETTE_1_7_2 = new Palette172();
    OriginalPalette ORIGINAL_PALETTE = new OriginalPalette();
 
+   Palette[] ALL_PALETTES = new Palette[] {
+           Palette.ORIGINAL_PALETTE,
+           Palette.PALETTE_1_7_2,
+           Palette.PALETTE_1_8_1,
+           Palette.PALETTE_1_12,
+           Palette.PALETTE_1_16,
+           Palette.NEWEST_PALETTE
+   };
+
    static Palette getPaletteForProtocol(int protocol) {
       if (protocol < 1) {
          return Palette.ORIGINAL_PALETTE;

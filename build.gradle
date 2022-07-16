@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'maven-publish'
 }
 
 group 'com.jnngl'
@@ -14,8 +15,36 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
 }
 
-jar {
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
 
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            pom {
+                name = 'Map Color'
+                description = 'Small library for converting colors and images to Minecraft map colors'
+                url = 'https://jnngl.com/'
+
+                scm {
+                    connection = 'scm:git:https://github.com/JNNGL/mapcolor.git'
+                    developerConnection = 'scm:git:https://github.com/JNNGL/mapcolor.git'
+                    url = 'https://github.com/JNNGL/mapcolor'
+                }
+
+                licenses {
+                    license {
+                        name = 'The GNU General Public License, Version 3'
+                        url = 'https://raw.githubusercontent.com/JNNGL/mapcolor/main/LICENSE'
+                    }
+                }
+            }
+        }
+    }
 }
 
 test {

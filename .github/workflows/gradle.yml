@@ -39,3 +39,8 @@ jobs:
         with:
           name: mapcolor
           path: "build/libs/*.jar"
+      - name: Upload test output
+        uses: actions/upload-artifact@v3.0.0
+        with:
+          name: TestResults
+          path: "build/test-results/*.png"
