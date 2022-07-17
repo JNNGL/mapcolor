@@ -1,3 +1,21 @@
+/*
+ *  Library for converting colors and images into Minecraft map colors
+ *  Copyright (C) 2022  JNNGL
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 package com.jnngl.mapcolor.matchers;
 
 import com.jnngl.mapcolor.ColorMatcher;
@@ -13,8 +31,8 @@ import java.io.InputStream;
 
 class ColorMatcherTest {
 
-   public static final int DEFAULT_COLOR_MATCHER_RUNS = 25;
-   public static final int DEFAULT_COLOR_MATCHER_TIMES = 25;
+   public static final int DEFAULT_COLOR_MATCHER_RUNS = 10;
+   public static final int DEFAULT_COLOR_MATCHER_TIMES = 10;
 
    public static final int DEFAULT_CACHED_MATCHER_RUNS = 50;
    public static final int DEFAULT_CACHED_MATCHER_TIMES = 1000;
@@ -55,7 +73,7 @@ class ColorMatcherTest {
             }
          }
          avg /= DEFAULT_COLOR_MATCHER_RUNS;
-         System.out.println(palette.getClass().getSimpleName() + ": avg: " + avg + "ms, min: " + min + "ms, max: " + max);
+         System.out.println(palette.getClass().getSimpleName() + ": avg: " + avg + "ms, min: " + min + "ms, max: " + max + "ms");
 
          ImageIO.write(matcher.toBufferedImage(dst, original.getWidth(), original.getHeight()), "PNG",
                  new File("build/test-results/default_matcher_output_" + palette.getClass().getSimpleName() + ".png"));
@@ -96,7 +114,7 @@ class ColorMatcherTest {
             }
          }
          avg /= DEFAULT_CACHED_MATCHER_RUNS;
-         System.out.println(palette.getClass().getSimpleName() + ": avg: " + avg + "ms, min: " + min + "ms, max: " + max);
+         System.out.println(palette.getClass().getSimpleName() + ": avg: " + avg + "ms, min: " + min + "ms, max: " + max + "ms");
 
          ImageIO.write(matcher.toBufferedImage(dst, original.getWidth(), original.getHeight()), "PNG",
                  new File("build/test-results/cached_matcher_output_" + palette.getClass().getSimpleName() + ".png"));
@@ -136,7 +154,7 @@ class ColorMatcherTest {
             }
          }
          avg /= BUFFERED_IMAGE_MATCHER_RUNS;
-         System.out.println(palette.getClass().getSimpleName() + ": avg: " + avg + "ms, min: " + min + "ms, max: " + max);
+         System.out.println(palette.getClass().getSimpleName() + ": avg: " + avg + "ms, min: " + min + "ms, max: " + max + "ms");
 
          ImageIO.write(matcher.toBufferedImage(dst, source.getWidth(), source.getHeight()), "PNG",
                  new File("build/test-results/buffered_image_mather_output_" + palette.getClass().getSimpleName() + ".png"));
